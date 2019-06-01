@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'user.dart';
+import 'project.dart';
 
 typedef OnDelete();
 
-class UserForm extends StatefulWidget {
-  final User user;
-  final state = _UserFormState();
+class ProjectForm extends StatefulWidget {
+  final Project project;
+  final state = _ProjectFormState();
   final OnDelete onDelete;
 
-  UserForm({Key key, this.user, this.onDelete}) : super(key: key);
+  ProjectForm({Key key, this.project, this.onDelete}) : super(key: key);
   @override
-  _UserFormState createState() => state;
+  _ProjectFormState createState() => state;
 
   bool isValid() => state.validate();
 }
 
-class _UserFormState extends State<UserForm> {
+class _ProjectFormState extends State<ProjectForm> {
   final form = GlobalKey<FormState>();
 
   @override
@@ -34,7 +34,7 @@ class _UserFormState extends State<UserForm> {
               AppBar(
                 leading: Icon(Icons.verified_user),
                 elevation: 0,
-                title: Text('User Details'),
+                title: Text('Project Details'),
                 backgroundColor: Theme.of(context).accentColor,
                 centerTitle: true,
                 actions: <Widget>[
@@ -47,14 +47,45 @@ class _UserFormState extends State<UserForm> {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                 child: TextFormField(
-                  initialValue: widget.user.fullName,
-                  onSaved: (val) => widget.user.fullName = val,
+                  initialValue: widget.project.project_team,
+                  onSaved: (val) => widget.project.project_team = val,
                   validator: (val) =>
-                      val.length > 3 ? null : 'Full name is invalid',
+                      val.length > 3 ? null : 'Team name is invalid',
                   decoration: InputDecoration(
-                    labelText: 'Full Name',
-                    hintText: 'Enter your full name',
+                    labelText: 'Team Name',
+                    hintText: 'Enter your team name',
                     icon: Icon(Icons.person),
+                    isDense: true,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 16, right: 16),
+                child: TextFormField(
+                  initialValue: widget.project.project_title,
+                  onSaved: (val) => widget.project.project_title = val,
+                  validator: (val) =>
+                      val.length > 3 ? null : 'Project Title is invalid',
+                  decoration: InputDecoration(
+                    labelText: 'Project Title',
+                    hintText: 'Enter the title of your project',
+                    icon: Icon(Icons.title),
+                    isDense: true,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 16, right: 16),
+                child: TextFormField(
+                  initialValue: widget.project.project_title,
+                  onSaved: (val) => widget.project.project_title = val,
+                  validator: (val) => val.length > 50 && val.length < 200
+                      ? null
+                      : 'Description must be between 50-200 characte',
+                  decoration: InputDecoration(
+                    labelText: 'Project Description',
+                    hintText: 'Describe your project',
+                    icon: Icon(Icons.description),
                     isDense: true,
                   ),
                 ),
@@ -62,14 +93,14 @@ class _UserFormState extends State<UserForm> {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, bottom: 24),
                 child: TextFormField(
-                  initialValue: widget.user.email,
-                  onSaved: (val) => widget.user.email = val,
+                  initialValue: widget.project.project_title,
+                  onSaved: (val) => widget.project.project_title = val,
                   validator: (val) =>
-                      val.contains('@') ? null : 'Email is invalid',
+                      val.contains('github') ? null : 'Link is invalid',
                   decoration: InputDecoration(
-                    labelText: 'Email Address',
-                    hintText: 'Enter your email',
-                    icon: Icon(Icons.email),
+                    labelText: 'Link to GitHub',
+                    hintText: 'Your project\'s GitHub link',
+                    icon: Icon(Icons.link),
                     isDense: true,
                   ),
                 ),

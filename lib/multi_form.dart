@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'empty_state.dart';
 import 'form.dart';
-import 'user.dart';
+import 'project.dart';
 
 class MultiForm extends StatefulWidget {
   @override
@@ -9,7 +9,7 @@ class MultiForm extends StatefulWidget {
 }
 
 class _MultiFormState extends State<MultiForm> {
-  List<UserForm> users = [];
+  List<ProjectForm> projects = [];
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class _MultiFormState extends State<MultiForm> {
         leading: Icon(
           Icons.wb_cloudy,
         ),
-        title: Text('REGISTER USERS'),
+        title: Text('Your Projects'),
         actions: <Widget>[
           FlatButton(
             child: Text('Save'),
@@ -39,17 +39,17 @@ class _MultiFormState extends State<MultiForm> {
             end: Alignment.bottomCenter,
           ),
         ),
-        child: users.length <= 0
+        child: projects.length <= 0
             ? Center(
                 child: EmptyState(
-                  title: 'Oops',
-                  message: 'Add form by tapping add button below',
+                  title: 'No Projects added',
+                  message: 'Add your Projects by tapping the add icon below!',
                 ),
               )
             : ListView.builder(
                 addAutomaticKeepAlives: true,
-                itemCount: users.length,
-                itemBuilder: (_, i) => users[i],
+                itemCount: projects.length,
+                itemBuilder: (_, i) => projects[i],
               ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -61,22 +61,22 @@ class _MultiFormState extends State<MultiForm> {
   }
 
   ///on form user deleted
-  void onDelete(User _user) {
+  void onDelete(Project _user) {
     setState(() {
-      var find = users.firstWhere(
-        (it) => it.user == _user,
+      var find = projects.firstWhere(
+        (it) => it.project == _user,
         orElse: () => null,
       );
-      if (find != null) users.removeAt(users.indexOf(find));
+      if (find != null) projects.removeAt(projects.indexOf(find));
     });
   }
 
   ///on add form
   void onAddForm() {
     setState(() {
-      var _user = User();
-      users.add(UserForm(
-        user: _user,
+      var _user = Project();
+      projects.add(ProjectForm(
+        project: _user,
         onDelete: () => onDelete(_user),
       ));
     });
@@ -84,27 +84,27 @@ class _MultiFormState extends State<MultiForm> {
 
   ///on save forms
   void onSave() {
-    if (users.length > 0) {
+    if (projects.length > 0) {
       var allValid = true;
-      users.forEach((form) => allValid = allValid && form.isValid());
+      projects.forEach((form) => allValid = allValid && form.isValid());
       if (allValid) {
-        var data = users.map((it) => it.user).toList();
+        var data = projects.map((it) => it.project).toList();
         Navigator.push(
           context,
           MaterialPageRoute(
             fullscreenDialog: true,
             builder: (_) => Scaffold(
                   appBar: AppBar(
-                    title: Text('List of Users'),
+                    title: Text('List of Projects'),
                   ),
                   body: ListView.builder(
                     itemCount: data.length,
                     itemBuilder: (_, i) => ListTile(
                           leading: CircleAvatar(
-                            child: Text(data[i].fullName.substring(0, 1)),
+                            child: Text(data[i].project_team.substring(0, 1)),
                           ),
-                          title: Text(data[i].fullName),
-                          subtitle: Text(data[i].email),
+                          title: Text(data[i].project_team),
+                          subtitle: Text(data[i].project_title),
                         ),
                   ),
                 ),
