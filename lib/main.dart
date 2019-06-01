@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hack/project_screen.dart';
-import 'multi_form.dart';
+import 'project.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,7 +15,8 @@ class MyApp extends StatelessWidget {
         platform: TargetPlatform.iOS,
       ),
       debugShowCheckedModeBanner: false,
-      home: ProjectScreen(),
+      home: ProjectScreen(new Project(
+          'Team Name', 'Project Title', 'description', 'Github Link')),
     );
   }
 }
