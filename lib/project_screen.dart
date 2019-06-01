@@ -110,17 +110,8 @@ class ProjectScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
                         TextIcon(
-                          icon: FontAwesomeIcons.bed,
-                          text: "${project.project_team ?? "#"} Bedrooom",
-                        ),
-                        TextIcon(
-                          icon: FontAwesomeIcons.shower,
-                          text:
-                              "${project.project_description ?? "#"} Bathrooom",
-                        ),
-                        TextIcon(
-                          icon: FontAwesomeIcons.car,
-                          text: "${project.git_link ?? "#"} Carspace",
+                          icon: FontAwesomeIcons.github,
+                          text: "${project.git_link ?? "#"}",
                         )
                       ],
                     ),
@@ -152,33 +143,6 @@ class ProjectScreen extends StatelessWidget {
                       "Tags",
                       style: Theme.of(context).textTheme.subtitle,
                     ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              color: Colors.white,
-              margin: const EdgeInsets.symmetric(vertical: 4.0),
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 8.0),
-                    child: Text(
-                      "Lister",
-                      style: Theme.of(context)
-                          .textTheme
-                          .title
-                          .copyWith(fontSize: 20.0),
-                    ),
-                  ),
-                  ListTile(
-                    leading: Icon(Icons.account_circle),
-                    title:
-                        Text("${project.project_description ?? "unavailable"}"),
-                    subtitle: Text(
-                        "${project?.project_description ?? "source unavailable"}"),
                   ),
                 ],
               ),
