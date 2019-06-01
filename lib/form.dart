@@ -34,7 +34,7 @@ class _ProjectFormState extends State<ProjectForm> {
               AppBar(
                 leading: Icon(Icons.verified_user),
                 elevation: 0,
-                title: Text('User Details'),
+                title: Text('Project Details'),
                 backgroundColor: Theme.of(context).accentColor,
                 centerTitle: true,
                 actions: <Widget>[
@@ -50,7 +50,7 @@ class _ProjectFormState extends State<ProjectForm> {
                   initialValue: widget.project.project_team,
                   onSaved: (val) => widget.project.project_team = val,
                   validator: (val) =>
-                      val.length > 3 ? null : 'Full name is invalid',
+                      val.length > 3 ? null : 'Team name is invalid',
                   decoration: InputDecoration(
                     labelText: 'Team Name',
                     hintText: 'Enter your team name',
@@ -65,11 +65,11 @@ class _ProjectFormState extends State<ProjectForm> {
                   initialValue: widget.project.project_title,
                   onSaved: (val) => widget.project.project_title = val,
                   validator: (val) =>
-                      val.contains('@') ? null : 'Email is invalid',
+                      val.length > 3 ? null : 'Project Title is invalid',
                   decoration: InputDecoration(
                     labelText: 'Project Title',
                     hintText: 'Enter the title of your project',
-                    icon: Icon(Icons.email),
+                    icon: Icon(Icons.title),
                     isDense: true,
                   ),
                 ),
@@ -79,12 +79,28 @@ class _ProjectFormState extends State<ProjectForm> {
                 child: TextFormField(
                   initialValue: widget.project.project_title,
                   onSaved: (val) => widget.project.project_title = val,
-                  validator: (val) =>
-                      val.contains('@') ? null : 'Email is invalid',
+                  validator: (val) => val.length > 50 && val.length < 200
+                      ? null
+                      : 'Description must be between 50-200 characte',
                   decoration: InputDecoration(
-                    labelText: 'Project Title',
-                    hintText: 'Enter the title of your project',
-                    icon: Icon(Icons.email),
+                    labelText: 'Project Description',
+                    hintText: 'Describe your project',
+                    icon: Icon(Icons.description),
+                    isDense: true,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 16, right: 16, bottom: 24),
+                child: TextFormField(
+                  initialValue: widget.project.project_title,
+                  onSaved: (val) => widget.project.project_title = val,
+                  validator: (val) =>
+                      val.contains('github') ? null : 'Link is invalid',
+                  decoration: InputDecoration(
+                    labelText: 'Link to GitHub',
+                    hintText: 'Your project\'s GitHub link',
+                    icon: Icon(Icons.link),
                     isDense: true,
                   ),
                 ),
