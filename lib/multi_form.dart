@@ -15,11 +15,7 @@ class _MultiFormState extends State<MultiForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: .0,
-        leading: Icon(
-          Icons.wb_cloudy,
-        ),
-        title: Text('Your Projects'),
+        title: Text('Fluttocracy'),
         actions: <Widget>[
           FlatButton(
             child: Text('Save'),
@@ -74,7 +70,7 @@ class _MultiFormState extends State<MultiForm> {
   ///on add form
   void onAddForm() {
     setState(() {
-      var _user = Project();
+      var _user = Project(' ', ' ', ' ', ' ', 0);
       projects.add(ProjectForm(
         project: _user,
         onDelete: () => onDelete(_user),
