@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'user.dart';
+import 'project.dart';
 
 typedef OnDelete();
 
-class UserForm extends StatefulWidget {
-  final User user;
-  final state = _UserFormState();
+class ProjectForm extends StatefulWidget {
+  final Project project;
+  final state = _ProjectFormState();
   final OnDelete onDelete;
 
-  UserForm({Key key, this.user, this.onDelete}) : super(key: key);
+  ProjectForm({Key key, this.project, this.onDelete}) : super(key: key);
   @override
-  _UserFormState createState() => state;
+  _ProjectFormState createState() => state;
 
   bool isValid() => state.validate();
 }
 
-class _UserFormState extends State<UserForm> {
+class _ProjectFormState extends State<ProjectForm> {
   final form = GlobalKey<FormState>();
 
   @override
@@ -47,28 +47,43 @@ class _UserFormState extends State<UserForm> {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                 child: TextFormField(
-                  initialValue: widget.user.fullName,
-                  onSaved: (val) => widget.user.fullName = val,
+                  initialValue: widget.project.project_team,
+                  onSaved: (val) => widget.project.project_team = val,
                   validator: (val) =>
                       val.length > 3 ? null : 'Full name is invalid',
                   decoration: InputDecoration(
-                    labelText: 'Full Name',
-                    hintText: 'Enter your full name',
+                    labelText: 'Team Name',
+                    hintText: 'Enter your team name',
                     icon: Icon(Icons.person),
                     isDense: true,
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 16, right: 16, bottom: 24),
+                padding: EdgeInsets.only(left: 16, right: 16),
                 child: TextFormField(
-                  initialValue: widget.user.email,
-                  onSaved: (val) => widget.user.email = val,
+                  initialValue: widget.project.project_title,
+                  onSaved: (val) => widget.project.project_title = val,
                   validator: (val) =>
                       val.contains('@') ? null : 'Email is invalid',
                   decoration: InputDecoration(
-                    labelText: 'Email Address',
-                    hintText: 'Enter your email',
+                    labelText: 'Project Title',
+                    hintText: 'Enter the title of your project',
+                    icon: Icon(Icons.email),
+                    isDense: true,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 16, right: 16),
+                child: TextFormField(
+                  initialValue: widget.project.project_title,
+                  onSaved: (val) => widget.project.project_title = val,
+                  validator: (val) =>
+                      val.contains('@') ? null : 'Email is invalid',
+                  decoration: InputDecoration(
+                    labelText: 'Project Title',
+                    hintText: 'Enter the title of your project',
                     icon: Icon(Icons.email),
                     isDense: true,
                   ),
