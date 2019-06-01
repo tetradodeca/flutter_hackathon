@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'project.dart';
 import './ui-widgets/text-icon.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProjectScreen extends StatelessWidget {
   final Project project;
+
 
   const ProjectScreen(this.project);
 

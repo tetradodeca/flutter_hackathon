@@ -70,7 +70,7 @@ class _MultiFormState extends State<MultiForm> {
   ///on add form
   void onAddForm() {
     setState(() {
-      var _user = Project();
+      var _user = Project(' ', ' ', ' ', ' ', 0);
       projects.add(ProjectForm(
         project: _user,
         onDelete: () => onDelete(_user),
