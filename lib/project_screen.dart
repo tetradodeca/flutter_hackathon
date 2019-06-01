@@ -7,7 +7,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class ProjectScreen extends StatelessWidget {
   final Project project;
 
-
   const ProjectScreen(this.project);
 
   @override
@@ -21,8 +20,8 @@ class ProjectScreen extends StatelessWidget {
             Expanded(
               child: Builder(
                 builder: (context) => FlatButton.icon(
-                      icon: Icon(Icons.launch),
-                      label: Text("Visit Listing"),
+                      icon: Icon(Icons.thumb_up),
+                      label: Text("Like"),
                       textColor: Colors.white,
                     ),
               ),
@@ -72,7 +71,7 @@ class ProjectScreen extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            project.project_description,
+                            project.project_team,
                             style: Theme.of(context).textTheme.title,
                           )
                         ],
