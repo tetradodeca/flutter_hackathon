@@ -9,7 +9,7 @@ class MultiForm extends StatefulWidget {
 }
 
 class _MultiFormState extends State<MultiForm> {
-  List<ProjectForm> users = [];
+  List<ProjectForm> projects = [];
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class _MultiFormState extends State<MultiForm> {
         leading: Icon(
           Icons.wb_cloudy,
         ),
-        title: Text('REGISTER USERS'),
+        title: Text('ADD PROJECT'),
         actions: <Widget>[
           FlatButton(
             child: Text('Save'),
@@ -39,7 +39,7 @@ class _MultiFormState extends State<MultiForm> {
             end: Alignment.bottomCenter,
           ),
         ),
-        child: users.length <= 0
+        child: projects.length <= 0
             ? Center(
                 child: EmptyState(
                   title: 'Oops',
@@ -48,8 +48,8 @@ class _MultiFormState extends State<MultiForm> {
               )
             : ListView.builder(
                 addAutomaticKeepAlives: true,
-                itemCount: users.length,
-                itemBuilder: (_, i) => users[i],
+                itemCount: projects.length,
+                itemBuilder: (_, i) => projects[i],
               ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -63,11 +63,11 @@ class _MultiFormState extends State<MultiForm> {
   ///on form user deleted
   void onDelete(Project _user) {
     setState(() {
-      var find = users.firstWhere(
+      var find = projects.firstWhere(
         (it) => it.project == _user,
         orElse: () => null,
       );
-      if (find != null) users.removeAt(users.indexOf(find));
+      if (find != null) projects.removeAt(projects.indexOf(find));
     });
   }
 
@@ -75,7 +75,7 @@ class _MultiFormState extends State<MultiForm> {
   void onAddForm() {
     setState(() {
       var _user = Project();
-      users.add(ProjectForm(
+      projects.add(ProjectForm(
         project: _user,
         onDelete: () => onDelete(_user),
       ));
@@ -84,18 +84,18 @@ class _MultiFormState extends State<MultiForm> {
 
   ///on save forms
   void onSave() {
-    if (users.length > 0) {
+    if (projects.length > 0) {
       var allValid = true;
-      users.forEach((form) => allValid = allValid && form.isValid());
+      projects.forEach((form) => allValid = allValid && form.isValid());
       if (allValid) {
-        var data = users.map((it) => it.project).toList();
+        var data = projects.map((it) => it.project).toList();
         Navigator.push(
           context,
           MaterialPageRoute(
             fullscreenDialog: true,
             builder: (_) => Scaffold(
                   appBar: AppBar(
-                    title: Text('List of Users'),
+                    title: Text('List of Projects'),
                   ),
                   body: ListView.builder(
                     itemCount: data.length,
