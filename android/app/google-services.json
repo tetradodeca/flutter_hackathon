@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "254052425624",
+    "firebase_url": "https://fluttocracy-25400.firebaseio.com",
+    "project_id": "fluttocracy-25400",
+    "storage_bucket": "fluttocracy-25400.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:254052425624:android:900012ddb4c60f27",
+        "android_client_info": {
+          "package_name": "com.example.hack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "254052425624-tie3il7teel8snfn819rlknje5mm87cc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hack",
+            "certificate_hash": "3ac71ae4d9baf7502c67a67123a52775c72caa17"
+          }
+        },
+        {
+          "client_id": "254052425624-p5h3r95pvfjh8dk591ogrru8a72jrgur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6g5UeWA3aYHOCCFBmYxBK2gbTbE79dhU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "254052425624-p5h3r95pvfjh8dk591ogrru8a72jrgur.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
