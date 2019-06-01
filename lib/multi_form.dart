@@ -19,7 +19,7 @@ class _MultiFormState extends State<MultiForm> {
         leading: Icon(
           Icons.wb_cloudy,
         ),
-        title: Text('ADD PROJECT'),
+        title: Text('Your Projects'),
         actions: <Widget>[
           FlatButton(
             child: Text('Save'),
@@ -42,8 +42,8 @@ class _MultiFormState extends State<MultiForm> {
         child: projects.length <= 0
             ? Center(
                 child: EmptyState(
-                  title: 'Oops',
-                  message: 'Add form by tapping add button below',
+                  title: 'No Projects added',
+                  message: 'Add your Projects by tapping the add icon below!',
                 ),
               )
             : ListView.builder(
